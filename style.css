@@ -1,0 +1,247 @@
+:root {
+    --bg: #e9eef3;
+    --panel: #ffffff;
+    --ink: #17243a;
+    --muted: #5d6b80;
+    --line: #cfd8e3;
+    --accent: #1f5fbf;
+    --idle: #c9d1db;
+    --bad: #b3261e;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+    line-height: 1.5;
+}
+
+main {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 28px 18px 60px;
+}
+
+h1 {
+    font-size: 1.7rem;
+    margin: 0 0 4px;
+    letter-spacing: -.01em;
+}
+
+.sub {
+    color: var(--muted);
+    margin: 0 0 24px;
+}
+
+section {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 18px;
+}
+
+h2 {
+    font-size: 1.05rem;
+    margin: 0 0 14px;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th,
+td {
+    text-align: left;
+    padding: 8px 10px;
+    border-bottom: 1px solid var(--line);
+}
+
+th {
+    font-weight: 600;
+    color: var(--muted);
+    font-size: .85rem;
+}
+
+input[type=number] {
+    width: 90px;
+    padding: 7px 8px;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    font: inherit;
+    color: var(--ink);
+    background: #fff;
+}
+
+button {
+    font: inherit;
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    border: 1px solid var(--line);
+    background: #fff;
+    color: var(--ink);
+}
+
+button.primary {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #fff;
+    font-weight: 600;
+}
+
+button:hover {
+    filter: brightness(.96);
+}
+
+button:focus-visible,
+input:focus-visible {
+    outline: 3px solid #8db4ee;
+    outline-offset: 1px;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+    margin-top: 14px;
+}
+
+.row label {
+    color: var(--muted);
+}
+
+#error {
+    color: var(--bad);
+    margin-top: 10px;
+    min-height: 1.4em;
+    font-weight: 600;
+}
+
+.del {
+    padding: 4px 10px;
+}
+
+/* Gantt */
+#gantt-wrap {
+    overflow-x: auto;
+    padding-bottom: 6px;
+}
+
+#gantt {
+    display: flex;
+    position: relative;
+    height: 56px;
+}
+
+.blk {
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-weight: 700;
+    border-right: 2px solid var(--panel);
+    position: relative;
+    transform-origin: left;
+    animation: grow .35s ease-out both;
+}
+
+.blk.idle {
+    background: var(--idle) !important;
+    color: var(--muted);
+}
+
+@keyframes grow {
+    from {
+        transform: scaleX(0);
+    }
+
+    to {
+        transform: scaleX(1);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .blk {
+        animation: none;
+    }
+}
+
+#ticks {
+    display: flex;
+    height: 22px;
+    margin-top: 4px;
+}
+
+.tick {
+    position: relative;
+    font-size: .78rem;
+    color: var(--muted);
+}
+
+.tick span {
+    position: absolute;
+    left: 0;
+    transform: translateX(-50%);
+}
+
+.tick.last span {
+    left: auto;
+    right: 0;
+    transform: translateX(50%);
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+    gap: 12px;
+    margin-bottom: 18px;
+}
+
+.card {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 14px 16px;
+}
+
+.card b {
+    display: block;
+    font-size: 1.6rem;
+    line-height: 1.2;
+}
+
+.card small {
+    color: var(--muted);
+}
+
+.chip {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border-radius: 3px;
+    margin-right: 6px;
+    vertical-align: -1px;
+}
+
+.hidden {
+    display: none;
+}
+
+.scroll {
+    overflow-x: auto;
+}
+
+.formula {
+    color: var(--muted);
+    font-size: .88rem;
+    margin: 12px 0 0;
+}
