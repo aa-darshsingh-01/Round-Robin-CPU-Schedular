@@ -58,7 +58,7 @@ void sort_by_arrival(Process p[], int n) {
 
 // Core Round Robin
 int round_robin(Process p[], int n, int quantum, Slice gantt[]) {
-    int  time = 0; // the simulated clock
+    int time = 0; // the simulated clock
     int next = 0; // index of next process that hasn't entered the queue yet
     int done = 0; // how many processes have finished 
     int g = 0; // how many gantt slices recoreded so far
@@ -67,12 +67,12 @@ int round_robin(Process p[], int n, int quantum, Slice gantt[]) {
     sort_by_arrival(p, n);
 
     // initialize remianing with burst
-    for(int i = 0; i < n; i++){
+    for(int i = 0; i < n; i++) {
         p[i].remaining = p[i].burst; 
     }
 
     // admit/enqueue all the processes that has enetered at time = 0
-    while(next < n && p[next].arrival <= time){
+    while(next < n && p[next].arrival <= time) {
         enqueue(next);
         next++;
     }
@@ -151,7 +151,7 @@ void print_gantt(Slice gantt[], int g) {
     // Row 2: time labels under each border 
     char num[16];
     int prev_len = snprintf(num, sizeof(num), "%d", gantt[0].start);
-    printf("\n%s", num);                        // first time, no extra padding
+    printf("\n%s", num); // first time, no extra padding
 
     for (int i = 0; i < g; i++) {
         int width = (gantt[i].end - gantt[i].start) * 2;
@@ -160,7 +160,7 @@ void print_gantt(Slice gantt[], int g) {
 
         int len = snprintf(num, sizeof(num), "%d", gantt[i].end);
         printf("%*s%s", width + 1 - prev_len, "", num);
-        prev_len = len;                        // remember for the next padding
+        prev_len = len; // remember for the next padding
     }
 
     printf("\n");
